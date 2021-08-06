@@ -34,4 +34,7 @@ module Backend
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
   end
+  Rails.application.config.assets.paths << Rails.root.join("vendor", "original_assets", "images")
+  Rails.application.config.assets.paths << Rails.root.join("vendor", "original_assets", "stylesheets")
+  Rails.application.config.assets.paths << Rails.root.join("vendor", "original_assets", "javascripts")
 end
