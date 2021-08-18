@@ -16,9 +16,18 @@ class EventsController < ApplicationController
     end
   end
 
-    private
-
-    def event_params
-      params.require(:event).permit(:id, :name, :start, :end, :timed, :description, :color)
+  def update
+    event = Event.find(params[:id])
+    if event.update(event_params)
+      render json: event
+    else
+      render json: event.errors, status: 422
     end
+  end
+
+  private
+
+  def event_params
+    params.require(:event).permit(:id, :name, :start, :end, :timed, :description, :color)
+  end
 end
